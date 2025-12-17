@@ -1,0 +1,125 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Let's travel</title>
+    <link rel="stylesheet" href="/css/bootstrap.min.css">
+</head>
+<body>
+    <header>
+        <nav class="navbar navbar-expand-lg navbar-light bg-light">
+            <div class="container">
+              <a class="navbar-brand" href="/">Let's travel</a>
+              <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+              </button>
+              <div class="collapse navbar-collapse" id="navbarSupportedContent">
+                <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+                  <li class="nav-item">
+                    <a class="nav-link" aria-current="page" href="/">Home</a>
+                  </li>
+                  <li class="nav-item">
+                    <a class="nav-link" aria-current="page" href="#">About Us</a>
+                  </li>
+                  <li class="nav-item">
+                    <a class="nav-link" aria-current="page" href="#">Contacts</a>
+                  </li>
+                  <li class="nav-item">
+                    <a class="nav-link active" aria-current="page" href="#">Admin</a>
+                  </li>
+                </ul>
+                <form class="d-flex">
+                  <input class="form-control me-2" type="tel" placeholder="Phone number" aria-label="Phone number">
+                  <button class="btn btn-outline-primary text-nowrap" type="submit">Call me</button>
+                </form>
+              </div>
+            </div>
+          </nav>
+    </header>
+    <div class="container mt-4">
+        <div class="row">
+            <div class="col-12 p-3 mb-5 bg-body-tertiary rounded border">
+                <h1 class="text-center">Admin</h1>
+                <hr>
+                <div class="container">
+                   <div class="row">
+                        <div class="col-3">
+                            <div class="nav flex-column nav-pills border p-3 rounded" id="v-pills-tab" role="tablist" aria-orientation="vertical">
+                            <button class="nav-link active" id="v-pills-articles-tab" data-bs-toggle="pill" data-bs-target="#v-pills-articles" type="button" role="tab" aria-controls="v-pills-articles" aria-selected="true">Articles</button>
+                            <button class="nav-link" id="v-pills-mails-tab" data-bs-toggle="pill" data-bs-target="#v-pills-mails" type="button" role="tab" aria-controls="v-pills-mails" aria-selected="false">Mails</button>
+                            <button class="nav-link" id="v-pills-callback-requests-tab" data-bs-toggle="pill" data-bs-target="#v-pills-callback-requests" type="button" role="tab" aria-controls="v-pills-callback-requests" aria-selected="false">Callback-requests</button>
+                            <button class="nav-link d-none" id="v-pills-add-post-tab" data-bs-toggle="pill" data-bs-target="#v-pills-add-post" type="button" role="tab" aria-controls="v-pills-add-post" aria-selected="false">add-post</button>
+                            </div>
+                        </div>
+                        <div class="col-9">
+                        <div class="tab-content border p-3 rounded" id="v-pills-tabContent">
+                            <div class="tab-pane fade show active" id="v-pills-articles" role="tabpanel" aria-labelledby="v-pills-articles-tab" tabindex="0">
+                                <button class="add-post-btn btn btn-primary">Add post</button>
+                                <table class="table table-striped mt-3">
+                                    <tbody>
+                                        <tr>
+                                            <th scope="row">1</th>
+                                            <td>Big Ben</td>
+                                            <td>2025-12-17</td>
+                                            <td>UK</td>
+                                            <td><button class="link-primary border-0 bg-transparent">Edit</button></td>
+                                            <td><button class="link-primary border-0 bg-transparent">X</button></td>
+                                        </tr>
+                                        <tr>
+                                            <th scope="row">2</th>
+                                            <td>Statue of Liberty</td>
+                                            <td>2025-12-17</td>
+                                            <td>USA</td>
+                                            <td><button class="link-primary border-0 bg-transparent">Edit</button></td>
+                                            <td><button class="link-primary border-0 bg-transparent">X</button></td>
+                                        </tr>
+                                      </tbody>
+                                    </table>
+                            </div>
+                            <div class="tab-pane fade" id="v-pills-mails" role="tabpanel" aria-labelledby="v-pills-mails-tab" tabindex="0">...</div>
+                            <div class="tab-pane fade" id="v-pills-callback-requests" role="tabpanel" aria-labelledby="v-pills-callback-requests-tab" tabindex="0">...</div>
+                            <div class="tab-pane fade" id="v-pills-add-post" role="tabpanel" aria-labelledby="v-pills-add-post-tab" tabindex="0">
+                               <h1>Create Post</h1>
+                                <form class="create-post-form">
+                                    <div class="mb-3">
+                                        <label for="create-title" class="form-label">Title</label>
+                                        <input type="text" class="form-control" id="create-title">
+                                    </div>
+                                    <div class="mb-3">
+                                        <label for="create-country" class="form-label">Country</label>
+                                        <input type="text" class="form-control" id="create-country">
+                                    </div>
+                                    <div class="mb-3">
+                                        <label for="create-image" class="form-label">Image Url</label>
+                                        <input type="text" class="form-control" id="create-image">
+                                    </div>
+                                    <div class="mb-3">
+                                        <label for="upload-image" class="form-label">Or:</label>
+                                        <input type="file" class="form-control" id="upload-image">
+                                    </div>
+                                    <div class="mb-3">
+                                        <label for="create-text" class="form-label">Text</label>
+                                        <textarea class="form-control" rows="5" id="create-text"></textarea>
+                                    </div>
+                                    <button type="submit" class="btn btn-primary">Create post</button>
+                                </form>
+                            </div>
+                        </div>
+                        </div>
+                   </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <footer class="navbar navbar-expand-lg navbar-light bg-light mt-3">
+        <div class="container py-3">
+            <p class="copy mb-0">&copy;2033, All Rights Reserved</p>
+            <button class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#contact-us-modal">Contact Us</button>
+        </div>
+    </footer>
+
+    <script src="/js/bootstrap.min.js"></script>
+    <script src="/admin/js/main.js"></script>
+</body>
+</html>
