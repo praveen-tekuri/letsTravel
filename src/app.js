@@ -3,7 +3,13 @@ const express = require("express");
 const app = express();
 const {connectDB} = require("./config/database");
 
+const postsRouter = require("./routes/posts.route");
+
 app.use(express.static('public'));
+app.use(express.json());
+
+app.use('/posts', postsRouter);
+
 
 connectDB().then(() => {
     console.log("Database connection established!");
