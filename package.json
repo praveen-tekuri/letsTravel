@@ -1,0 +1,25 @@
+{
+  "name": "letstravel",
+  "version": "1.0.0",
+  "description": "",
+  "keywords": [
+    "MongoDB",
+    "Express",
+    "JavaScript",
+    "EJS",
+    "NodeJS",
+    "HTML5",
+    "CSS3",
+    "Bootstrap"
+  ],
+  "license": "ISC",
+  "author": "Praveen Tekuri",
+  "type": "commonjs",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "dependencies": {
+    "express": "^5.2.1"
+  }
+}
