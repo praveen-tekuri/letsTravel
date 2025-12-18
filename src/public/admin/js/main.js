@@ -83,3 +83,10 @@ const loadCallbacks = async() => {
         callBacksContainer.insertAdjacentHTML("beforeend", callbacksHtml);
     })
 }
+
+let logOutBtn = document.querySelector(".logout-btn");
+
+logOutBtn.addEventListener("click", function(e){
+    document.cookie.split(";").forEach(function(c) { document.cookie = c.replace(/^ +/, "").replace(/=.*/, "=;expires=" + new Date().toUTCString() + ";path=/"); });
+    window.location.href="/";
+})
