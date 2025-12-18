@@ -1,6 +1,7 @@
 const express = require("express");
 const router = express.Router();
 const {Post} = require("../models/posts.model");
+const userAuth = require("../middleware/userAuth");
 
 router.get("/", async(req, res) => {
     try {
@@ -11,7 +12,7 @@ router.get("/", async(req, res) => {
     }
 })
 
-router.post("/", async(req, res) => {
+router.post("/", userAuth, async(req, res) => {
     try {
         let {title, country, imageUrl, text, description, date} = req.body;
         let newPost = new Post({
@@ -24,7 +25,7 @@ router.post("/", async(req, res) => {
     }
 })
 
-router.put("/:id", async(req, res) => {
+router.put("/:id", userAuth, async(req, res) => {
     try {
         let id = req.params.id;
         let updatePost = await Post.findByIdAndUpdate({_id: id}, req.body);
@@ -35,7 +36,7 @@ router.put("/:id", async(req, res) => {
     }
 })
 
-router.delete("/:id", async(req, res) => {
+router.delete("/:id", userAuth, async(req, res) => {
     try {
         let id = req.params.id;
         await Post.findOneAndDelete({_id: id});

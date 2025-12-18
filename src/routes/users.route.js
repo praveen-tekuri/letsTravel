@@ -2,6 +2,7 @@ const express = require("express");
 const router = express.Router();
 const {User} = require("../models/users.model");
 const bcrypt = require("bcrypt");
+const {generateToken} = require("../controllers/auth");
 
 router.post("/register", async(req, res) => {
     try {
@@ -18,17 +19,21 @@ router.post("/register", async(req, res) => {
 router.post("/login", async(req, res) => {
     try {
         const user = await User.findOne({emailId: req.body.emailId});
-        console.log(user);
         if(!user){
             res.json({message: "Invalid credentials"})
         }
         const isPasswordValid = await bcrypt.compare(req.body.password, user.password);
         if(isPasswordValid){
-            res.json({message: "Login successful"});
+            const token =  generateToken(user);
+            res.cookie("user_token", token);
+            res.send({
+                redirectUrl: '/admin',
+                success: 'Success'
+            })
         } 
-        res.json({message: "Invalid credentials"});     
+        res.send({message: "Invalid credentials"});    
     } catch (error) {
-        res.status(400).send("ERR: " + error.message);
+        // res.status(400).send("ERR: " + error.message);
     }
 })
 

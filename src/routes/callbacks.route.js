@@ -1,8 +1,9 @@
 const express = require("express");
 const router = express.Router();
 const {Callback} = require("../models/callbacks.model");
+const userAuth = require("../middleware/userAuth");
 
-router.get("/", async(req, res) => {
+router.get("/", userAuth, async(req, res) => {
     try {
         const callbacks = await Callback.find();
         res.send(callbacks);
@@ -21,7 +22,7 @@ router.post("/", async(req, res) => {
     }
 })
 
-router.delete("/:id", async(req, res) => {
+router.delete("/:id", userAuth, async(req, res) => {
     try {
         await Callback.findByIdAndDelete({_id: req.params.id});
         res.send("Callback request has been deleted");

@@ -1,14 +1,14 @@
 const express = require("express");
 const router = express.Router();
 const {Mail} = require("../models/mails.model");
+const userAuth = require("../middleware/userAuth");
 
-
-router.get("/", async(req, res) => {
+router.get("/", userAuth, async(req, res) => {
     try {
         const mails = await Mail.find();
         res.send(mails);
     } catch (error) {
-        res.status(400).send("ERR: " + error.message)
+        res.status(400).send("ERR: " + error.message);
     }
 })
 
@@ -25,7 +25,7 @@ router.post("/", async(req, res) => {
     }
 })
 
-router.delete("/:id", async(req, res) => {
+router.delete("/:id", userAuth, async(req, res) => {
     try {
         await Mail.findByIdAndDelete({_id: req.params.id});
         res.send("Mail has been deleted")

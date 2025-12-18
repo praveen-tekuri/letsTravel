@@ -11,9 +11,15 @@ signInForm.addEventListener("submit", function(e){
             'Content-Type': 'application/json'
         },
         body: JSON.stringify({emailId, password})
-    }).then((res) => res.json())
-    .then((data) => alert(data.message))
-    .catch((err) => console.log(err))
+    }).then((res) => res.json()).then((data) => {
+        let redirectUrl = data.redirectUrl
+        console.log(redirectUrl);
+        if(redirectUrl){
+            window.location.href = redirectUrl
+        }else {
+            alert(data.message);
+        }
+    })
 })
 
 registerForm.addEventListener("submit", function(e){
