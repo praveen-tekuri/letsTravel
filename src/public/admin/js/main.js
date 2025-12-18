@@ -9,8 +9,15 @@ const getPosts = async () => {
                     .then((data) => data);
 }
 
+const getMails = async () => {
+    return await fetch("http://localhost:3000/mails")
+                    .then((res) => res.json())
+                    .then((data) => data)
+}
+
 document.addEventListener("DOMContentLoaded", function(e){
     loadArticles();
+    loadMails();
 });
 
 const loadArticles = async () => {
@@ -29,5 +36,26 @@ const loadArticles = async () => {
             </tr>
         `
         articlesContainer.insertAdjacentHTML("beforeend", postHtml);
+    })
+}
+
+const loadMails = async () => {
+    let mailsContainer = document.querySelector("#v-pills-mails tbody");
+    const mails = await getMails();
+    let i = 1;
+    mails.forEach((mail) => {
+        let mailHtml = `
+            <tr>
+                <th scope="row">${i++} <input type="hidden" class="id" value="${mail._id}"></th>
+                <td>${mail.name}</td>
+                <td>${mail.createdAt}</td>
+                <td>${mail.emailId}</td>
+                <td><button class="mail-delete-btn link-primary border-0 bg-transparent">X</button></td>
+            </tr>
+            <tr>
+                <td colspan="5">${mail.message}</td>
+            </tr>
+        `
+        mailsContainer.insertAdjacentHTML("beforeend", mailHtml);
     })
 }
