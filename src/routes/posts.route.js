@@ -45,4 +45,13 @@ router.delete("/:id", async(req, res) => {
     }
 })
 
+router.get("/:id", async(req, res) => {
+    try {
+        let post = await Post.findById({_id: req.params.id});
+        res.send(post);
+    } catch (error) {
+        res.status(400).send("ERR: " + error.message);
+    }
+})
+
 module.exports = router;
