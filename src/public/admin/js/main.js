@@ -15,9 +15,16 @@ const getMails = async () => {
                     .then((data) => data)
 }
 
+const getCallbacks = async () => {
+    return await fetch("http://localhost:3000/callbacks")
+                        .then((res) => res.json())
+                        .then((data) => data);
+}
+
 document.addEventListener("DOMContentLoaded", function(e){
     loadArticles();
     loadMails();
+    loadCallbacks();
 });
 
 const loadArticles = async () => {
@@ -57,5 +64,22 @@ const loadMails = async () => {
             </tr>
         `
         mailsContainer.insertAdjacentHTML("beforeend", mailHtml);
+    })
+}
+
+const loadCallbacks = async() => {
+    let callBacksContainer = document.querySelector("#v-pills-callback-requests tbody");
+    const callbacks = await getCallbacks();
+    let i = 1;
+    callbacks.forEach((callback) => {
+        callbacksHtml = `
+            <tr>
+                <th scope="row">${i++}<input type="hidden" class="id" value="${callback._id}"></th>
+                <td>${callback.phoneNumber}</td>
+                <td>${callback.createdAt}}</td>
+                <td><button class="callback-delete-btn link-primary border-0 bg-transparent">X</button></td>
+            </tr>
+        `
+        callBacksContainer.insertAdjacentHTML("beforeend", callbacksHtml);
     })
 }
