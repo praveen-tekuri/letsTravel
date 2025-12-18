@@ -21,7 +21,7 @@ async function loadPosts(){
                         <div class="card-body">
                             <h5 class="card-title">${post.title}</h5>
                             <p class="card-text">${post.description}</p>
-                            <button class="btn btn-primary">Details</button>
+                            <a href="landmarks?id=${post._id}" class="btn btn-primary">Details</a>
                         </div>
                     </div>
                 </div>
