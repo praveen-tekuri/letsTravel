@@ -5,6 +5,7 @@ require('dotenv').config();
 const postsRouter = require("./routes/posts.route");
 const mailsRouter = require("./routes/mails.route");
 const callbacksRouter = require("./routes/callbacks.route");
+const usersRouter = require("./routes/users.route");
 const {Post} = require("./models/posts.model");
 
 app.use(express.static('public'));
@@ -14,6 +15,7 @@ app.set("view engine", 'ejs');
 app.use('/posts', postsRouter);
 app.use('/mails', mailsRouter);
 app.use('/callbacks', callbacksRouter);
+app.use('/users', usersRouter);
 
 app.get("/landmarks", async(req, res) => {
     try {
