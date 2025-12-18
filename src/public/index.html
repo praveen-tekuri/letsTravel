@@ -97,20 +97,20 @@
               <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
             </div>
             <div class="modal-body">
-                <form>
+                <form class="contact-form">
                     <div class="mb-3">
-                      <label for="name" class="form-label">Your name</label>
-                      <input type="text" class="form-control" id="name" placeholder="Name">
+                      <label for="contact-name" class="form-label">Your name</label>
+                      <input type="text" class="form-control" id="contact-name">
                     </div>
                     <div class="mb-3">
-                      <label for="phone" class="form-label">Phone number</label>
-                      <input type="text" class="form-control" id="phone" placeholder="Phone">
+                      <label for="contact-mail" class="form-label">Email Id</label>
+                      <input type="text" class="form-control" id="contact-mail">
                     </div>
                     <div class="mb-3">
-                      <label for="message" class="form-label">Message</label>
-                      <textarea class="form-control" id="message"></textarea>
+                      <label for="contact-message" class="form-label">Message</label>
+                      <textarea class="form-control" id="contact-message"></textarea>
                     </div>
-                    <button type="submit" class="btn btn-primary">Submit</button>
+                    <button type="submit" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#contact-us-modal">Send</button>
                   </form>
             </div>
           </div>
@@ -118,5 +118,6 @@
       </div>
     <script src="js/bootstrap.min.js"></script>
     <script src="js/main.js"></script>
+    <script src="js/createContact.js"></script>
 </body>
 </html>
