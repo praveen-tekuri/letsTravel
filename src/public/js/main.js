@@ -16,7 +16,7 @@ async function loadPosts(){
     posts.forEach((post) => {
         postHtml = `
             <div class="col">
-                    <div class="card">
+                    <div class="card" style="min-height: 100%">
                         <img src="${post.imageUrl}" class="card-img-top" alt="${post.title}">
                         <div class="card-body">
                             <h5 class="card-title">${post.title}</h5>

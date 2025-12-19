@@ -19,7 +19,7 @@ router.post("/", async(req, res) => {
             name, emailId, message
         })
         await newMail.save();
-        res.send("Mail has been created")
+        res.send("Your query has been sent")
     } catch (error) {
         res.status(400).send("ERR: " + error.message)
     }

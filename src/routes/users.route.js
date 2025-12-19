@@ -7,6 +7,10 @@ const {generateToken} = require("../controllers/auth");
 router.post("/register", async(req, res) => {
     try {
         const {emailId, password} = req.body;
+        const isEmailExist = await User.findOne({emailId});
+        if(isEmailExist){
+            res.json({message: "User with email address already exists"})
+        }
         const hashPassword = await bcrypt.hash(password, 12);
         const newUser = new User({emailId, password: hashPassword})
         await newUser.save();
