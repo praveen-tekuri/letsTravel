@@ -1,13 +1,16 @@
 let createPostForm = document.querySelector(".create-post-form");
 
+let title = document.getElementById("create-title");
+let country = document.getElementById("create-country");
+let imageUrl = document.getElementById("create-image");
+let text = document.getElementById("create-text");
+
+let imageFile = document.getElementById("upload-image");
+
 createPostForm.addEventListener("submit", function(e){
     e.preventDefault();
-    let title = document.getElementById("create-title").value;
-    let country = document.getElementById("create-country").value;
-    let imageUrl = document.getElementById("create-image").value;
-    let text = document.getElementById("create-text").value;
-
-    let createText = text;
+    
+    let createText = text.value;
     let createDescription;
 
     if(createText.indexOf('.') === -1){
@@ -15,19 +18,33 @@ createPostForm.addEventListener("submit", function(e){
     }else{
         createDescription = createText.slice(0, createText.indexOf('.') + 1);
     }
+
+    let data = new FormData();
+    data.append('title', title.value);
+    data.append('country', country.value);
+    data.append('imageUrl', imageUrl.value);
+    data.append('text', createText);
+    data.append('description', createDescription);
+    data.append('imageFile', imageFile.files[0])
     
     fetch("http://localhost:3000/posts", {
         method: "POST",
-        headers: {
-            'Content-Type': 'application/json'
-        },
-        body: JSON.stringify({
-            title, country, imageUrl,
-            text: createText,
-            description: createDescription
-        })
+        body: data
     }).then((res) => res.text()).then((data) => {
-        alert(data);
+        alert(data)
         window.history.go();
     })
 })
+
+
+const disableInput = (input1, input2) => {
+    if(input1.value){
+        input2.disabled = true
+    }
+    else{
+        input2.disabled = false
+    }
+}
+
+imageUrl.addEventListener('change', () => disableInput(imageUrl, imageFile));
+imageFile.addEventListener('change', () => disableInput(imageFile, imageUrl));

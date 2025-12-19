@@ -9,11 +9,19 @@ const usersRouter = require("./routes/users.route");
 const {Post} = require("./models/posts.model");
 const cookieParser = require("cookie-parser");
 const {checkToken} = require("./controllers/auth");
+const multer = require("multer");
 
 app.use(express.static('public'));
 app.use(express.json());
 app.set("view engine", 'ejs');
 app.use(cookieParser());
+
+let imageStorage = multer.diskStorage({
+    destination: (req, file, cb) => cb(null, 'public/images'),
+    filename: (req, file, cb) => cb(null, file.originalname)
+})
+app.use(multer({storage: imageStorage}).single('imageFile'));
+
 
 app.use('/posts', postsRouter);
 app.use('/mails', mailsRouter);

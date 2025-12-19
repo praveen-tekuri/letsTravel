@@ -15,9 +15,16 @@ router.get("/", async(req, res) => {
 router.post("/", userAuth, async(req, res) => {
     try {
         let {title, country, imageUrl, text, description, date} = req.body;
+        let imagePath;
+        if(imageUrl){
+            imagePath = imageUrl
+        }else{
+            imagePath = req.file.path.substring(req.file.path.indexOf("/"), req.file.path.length);
+        }
         let newPost = new Post({
-            title, country, imageUrl, text, description, date: new Date()
+            title, country, imageUrl: imagePath, text, description, date: new Date()
         })
+        console.log(req.body);
         await newPost.save();
         res.send("Post has been created");
     } catch (error) {
